@@ -2,26 +2,26 @@ package model;
 
 class Category {
 
-	private Integer idCategoria;
-	private String nombreCategoria;
+	private Integer categoruId;
+	private String name;
 
 	public Category() {
 	}
 
-	public Integer getIdCategoria() {
-		return idCategoria;
+	public Integer getCategoruId() {
+		return categoruId;
 	}
 
-	public void setIdCategoria(Integer idCategoria) {
-		this.idCategoria = idCategoria;
+	public void setCategoruId(Integer categoruId) {
+		this.categoruId = categoruId;
 	}
 
-	public String getNombreCategoria() {
-		return nombreCategoria;
+	public String getName() {
+		return name;
 	}
 
-	public void setNombreCategoria(String nombreCategoria) {
-		this.nombreCategoria = nombreCategoria;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

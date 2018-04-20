@@ -9,7 +9,7 @@
 	}
 %>
 
-<div class="navbar-fixed">
+<div class="">
 	<nav>
 		<div class="nav-wrapper container">
 			<a href="<% out.print((loged) ? "/home" : "/");%>" class="brand-logo logo_font">DondeMaruja</a>

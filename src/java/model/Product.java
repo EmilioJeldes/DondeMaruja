@@ -4,44 +4,44 @@ import java.util.List;
 
 public class Product {
 
-	private Integer idProducto;
-	private String nombreProducto;
-	private List<Integer> categorias;
-	private Integer idMarca;
+	private Integer productId;
+	private String productName;
+	private List<Integer> categories;
+	private Integer brandId;
 
 	public Product() {
 	}
 
-	public Integer getIdProducto() {
-		return idProducto;
+	public Integer getProductId() {
+		return productId;
 	}
 
-	public void setIdProducto(Integer idProducto) {
-		this.idProducto = idProducto;
+	public void setProductId(Integer productId) {
+		this.productId = productId;
 	}
 
-	public String getNombreProducto() {
-		return nombreProducto;
+	public String getProductName() {
+		return productName;
 	}
 
-	public void setNombreProducto(String nombreProducto) {
-		this.nombreProducto = nombreProducto;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
-	public List<Integer> getCategorias() {
-		return categorias;
+	public List<Integer> getCategories() {
+		return categories;
 	}
 
-	public void setCategorias(List<Integer> categorias) {
-		this.categorias = categorias;
+	public void setCategories(List<Integer> categories) {
+		this.categories = categories;
 	}
 
-	public Integer getIdMarca() {
-		return idMarca;
+	public Integer getBrandId() {
+		return brandId;
 	}
 
-	public void setIdMarca(Integer idMarca) {
-		this.idMarca = idMarca;
+	public void setBrandId(Integer brandId) {
+		this.brandId = brandId;
 	}
 
 }
