@@ -42,11 +42,11 @@
 							</div>
 							<div class="row">
 								<div class="col s12 m12 center">
-									<p>¿No tiene cuenta de usuario aún? <a href="/signin">Creala aquí</a></p>
+									<p>¿No tiene cuenta de usuario aún? <a href="/register">Creala aquí</a></p>
 								</div>
 							</div>
 							<div class="row center">
-								<button class="btn waves-effect waves-light" type="submit">Submit</button>
+								<button class="btn w100 waves-effect waves-light" type="submit">Submit</button>
 							</div>
 						</div>
 					</form>
