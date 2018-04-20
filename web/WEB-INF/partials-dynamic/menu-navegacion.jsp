@@ -11,7 +11,7 @@
 
 <nav>
     <div class="nav-wrapper container">
-		<a href="/" class="brand-logo logo_font">DondeMaruja</a>
+		<a href="<% out.print((loged) ? "/home" : "/");%>" class="brand-logo logo_font">DondeMaruja</a>
 		<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 		<ul class="right hide-on-med-and-down">
 			<%
@@ -23,7 +23,7 @@
 				<%
 				} else {
 				%>
-			<li><a href="/">Inicio</a></li>
+			<li><a href="/home">Inicio</a></li>
 			<li><a href = "/logout">Cerrar Sesion</a></li>
 				<%
 					}
@@ -39,7 +39,7 @@
 				<%
 				} else {
 				%>
-			<li><a href="/">Inicio</a></li>
+			<li><a href="/home">Inicio</a></li>
 			<li><a href = "/logout">Cerrar Sesion</a></li>
 				<%
 					}

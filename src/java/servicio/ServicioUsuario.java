@@ -1,10 +1,14 @@
 package servicio;
 
-import modelo.Usuario;
+import command.UserCommand;
+import javax.servlet.http.HttpServletRequest;
+import modelo.User;
 
 public interface ServicioUsuario {
 
 	boolean isLoggedIn(String id);
 
-	Usuario iniciarSesion(String email, String contraseña);
+	User iniciarSesion(String email, String contraseña);
+
+	UserCommand registrarUsuario(HttpServletRequest source);
 }

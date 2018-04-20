@@ -11,7 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Usuario;
+import modelo.User;
 import servicio.ServicioUsuario;
 import servicio.ServicioUsuarioImpl;
 
@@ -40,10 +40,12 @@ public class Authenticate extends HttpServlet {
 		String contraseña = request.getParameter("contraseña");
 
 		try {
-			Usuario usuarioIniciado = servicioUsuario.iniciarSesion(email, contraseña);
-			utilidades.Utilidades.getInstancia().irAPagina(response, request, getServletContext(), "/authenticate.jsp");
+			User usuarioIniciado = servicioUsuario.iniciarSesion(email, contraseña);
+			request.getSession().setAttribute("loged", true);
+			response.sendRedirect("/home");
 		} catch (RuntimeException e) {
 			request.setAttribute("error", e.getMessage());
+			request.getSession().setAttribute("loged", false);
 			utilidades.Utilidades.getInstancia().irAPagina(response, request, getServletContext(), "/login.jsp");
 		}
 

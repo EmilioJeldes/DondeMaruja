@@ -1,12 +1,20 @@
 package servicio;
 
-import modelo.Usuario;
+import command.UserCommand;
+import converter.RequestToUserCommand;
+import converter.UserCommandToUser;
+import converter.UserToUserCommand;
+import javax.servlet.http.HttpServletRequest;
+import modelo.User;
 import repositorio.UsuarioRepositorio;
 import repositorio.UsuarioRepositorioImpl;
 
 public class ServicioUsuarioImpl implements ServicioUsuario {
 
-	UsuarioRepositorio usuarioRepositorio = new UsuarioRepositorioImpl();
+	UsuarioRepositorio userRepository = new UsuarioRepositorioImpl();
+	RequestToUserCommand requestToUserCommand = new RequestToUserCommand();
+	UserCommandToUser userCommandToUser = new UserCommandToUser();
+	UserToUserCommand userToUserCommand = new UserToUserCommand();
 
 	@Override
 	public boolean isLoggedIn(String id) {
@@ -21,15 +29,23 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
 		if (intId == 0) {
 			throw new RuntimeException("No existe un usuario con la id proporcionada");
 		} else {
-			logeado = usuarioRepositorio.isLoggedIn(intId);
+			logeado = userRepository.isLoggedIn(intId);
 		}
 		return logeado;
 	}
 
 	@Override
-	public Usuario iniciarSesion(String email, String contraseña) {
-		Usuario usr = usuarioRepositorio.login(email, contraseña);
+	public User iniciarSesion(String email, String contraseña) {
+		User usr = userRepository.login(email, contraseña);
 		return usr;
+	}
+
+	@Override
+	public UserCommand registrarUsuario(HttpServletRequest source) {
+		UserCommand command = requestToUserCommand.convert(source);
+		User user = userCommandToUser.convert(command);
+		User savedUser = userRepository.guardar(user);
+		return userToUserCommand.convert(savedUser);
 	}
 
 }

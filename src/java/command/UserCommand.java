@@ -1,24 +1,27 @@
 package command;
 
-import com.sun.istack.internal.Nullable;
 import java.util.Date;
 
 public class UserCommand {
 
-	@Nullable
 	private int id;
 	private int rut;
-	private String Nombre;
-	private String Apellido;
+	private String nombre;
+	private String apellido;
 	private Date fechaNacimiento;
 	private int edad;
 	private String estadoCivil;
 	private String email;
 	private String contraseña;
-	private int telefono;
+	private long telefono;
 	private boolean logeado;
 
 	public UserCommand() {
+		logeado = false;
+		id = 0;
+		rut = 0;
+		edad = 0;
+		telefono = 0L;
 	}
 
 	public int getId() {
@@ -33,24 +36,37 @@ public class UserCommand {
 		return rut;
 	}
 
-	public void setRut(int rut) {
-		this.rut = rut;
+	public void setRut(int rut) throws RuntimeException {
+		if (rut < 23000000) {
+			this.rut = rut;
+		} else {
+			throw new RuntimeException("Rut no debe tener puntos ni guiones");
+		}
 	}
 
 	public String getNombre() {
-		return Nombre;
+		return nombre;
 	}
 
-	public void setNombre(String Nombre) {
-		this.Nombre = Nombre;
+	public void setNombre(String nombre) throws RuntimeException {
+		if (nombre.length() >= 3) {
+			this.nombre = nombre;
+		} else {
+			throw new RuntimeException("Ingrese un nombre real");
+		}
 	}
 
 	public String getApellido() {
-		return Apellido;
+		return apellido;
 	}
 
-	public void setApellido(String Apellido) {
-		this.Apellido = Apellido;
+	public void setApellido(String apellido) throws RuntimeException {
+		if (apellido.length() >= 3) {
+			this.apellido = apellido;
+		} else {
+			throw new RuntimeException("Ingrese un apellido real");
+		}
+
 	}
 
 	public Date getFechaNacimiento() {
@@ -58,23 +74,35 @@ public class UserCommand {
 	}
 
 	public void setFechaNacimiento(Date fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
+		if (fechaNacimiento != null) {
+			this.fechaNacimiento = fechaNacimiento;
+		} else {
+			throw new RuntimeException("Fecha de nacimiento no ingresada");
+		}
 	}
 
 	public int getEdad() {
 		return edad;
 	}
 
-	public void setEdad(int edad) {
-		this.edad = edad;
+	public void setEdad(int edad) throws RuntimeException {
+		if (edad > 0 && edad < 110) {
+			this.edad = edad;
+		} else {
+			throw new RuntimeException("Ingrese una edad real");
+		}
 	}
 
 	public String getEstadoCivil() {
 		return estadoCivil;
 	}
 
-	public void setEstadoCivil(String estadoCivil) {
-		this.estadoCivil = estadoCivil;
+	public void setEstadoCivil(String estadoCivil) throws RuntimeException {
+		if (estadoCivil.length() > 5) {
+			this.estadoCivil = estadoCivil;
+		} else {
+			throw new RuntimeException("Seleccione un estado civil");
+		}
 	}
 
 	public String getEmail() {
@@ -93,12 +121,16 @@ public class UserCommand {
 		this.contraseña = contraseña;
 	}
 
-	public int getTelefono() {
+	public long getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(int telefono) {
-		this.telefono = telefono;
+	public void setTelefono(long telefono) throws RuntimeException {
+		if (telefono < 56999999999L) {
+			this.telefono = telefono;
+		} else {
+			throw new RuntimeException("Ingrese un telefono real");
+		}
 	}
 
 	public boolean isLogeado() {

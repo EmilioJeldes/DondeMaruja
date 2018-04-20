@@ -5,24 +5,19 @@
  */
 package controlador;
 
-import command.UserCommand;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import servicio.ServicioUsuario;
-import servicio.ServicioUsuarioImpl;
 
 /**
  *
  * @author emilio
  */
-@WebServlet(name = "Register", urlPatterns = {"/register"})
-public class Register extends HttpServlet {
-
-	ServicioUsuario userService = new ServicioUsuarioImpl();
+@WebServlet(name = "Home", urlPatterns = {"/home"})
+public class Home extends HttpServlet {
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -36,7 +31,20 @@ public class Register extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 
-		utilidades.Utilidades.getInstancia().irAPagina(response, request, getServletContext(), "/registro.jsp");
+		if (null == request.getSession().getAttribute("loged")) {
+			request.getSession().setAttribute("loged", false);
+			response.sendRedirect("/login");
+		}
+
+		boolean loged = (boolean) request.getSession().getAttribute("loged");
+		if (loged) {
+			request.getSession().setAttribute("loged", true);
+			utilidades.Utilidades.getInstancia().irAPagina(response, request, getServletContext(), "/home.jsp");
+		} else {
+			request.getSession().setAttribute("loged", false);
+			response.sendRedirect("/login");
+		}
+
 	}
 
 	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -65,15 +73,7 @@ public class Register extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		try {
-			UserCommand usuarioRegistrado = userService.registrarUsuario(request);
-			System.out.println(usuarioRegistrado.getId());
-			System.out.println(usuarioRegistrado.getNombre());
-			response.sendRedirect("/login");
-		} catch (Exception e) {
-
-		}
+		processRequest(request, response);
 	}
 
 	/**

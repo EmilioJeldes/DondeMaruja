@@ -1,16 +1,16 @@
 package repositorio;
 
-import modelo.Usuario;
+import modelo.User;
 
 public interface UsuarioRepositorio {
 
-	Usuario login(String email, String password);
+	User login(String email, String password);
 
-	Usuario buscarPorId(int id);
+	User buscarPorId(int id);
 
-	Usuario buscarPorNombre(String nombre, String apellido);
+	User buscarPorNombre(String nombre, String apellido);
 
-	Usuario guardar(Usuario usuario);
+	User guardar(User usuario);
 
 	void eliminarPorId(int id);
 

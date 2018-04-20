@@ -2,7 +2,7 @@ package modelo;
 
 import java.util.Date;
 
-public class Usuario {
+public class User {
 
 	private int id;
 	private int rut;
@@ -13,10 +13,10 @@ public class Usuario {
 	private String estadoCivil;
 	private String email;
 	private String contraseña;
-	private int telefono;
+	private long telefono;
 	private boolean logeado;
 
-	public Usuario() {
+	public User() {
 		this.id = 0;
 		this.rut = 0;
 		this.edad = 0;
@@ -24,7 +24,7 @@ public class Usuario {
 		this.logeado = false;
 	}
 
-	public Usuario(int rut, String Nombre, String Apellido, Date fechaNacimiento, int edad, String estadoCivil, String email, String contraseña, int telefono) {
+	public User(int rut, String Nombre, String Apellido, Date fechaNacimiento, int edad, String estadoCivil, String email, String contraseña, int telefono) {
 		this.id = 0;
 		this.logeado = false;
 		this.rut = rut;
@@ -110,11 +110,11 @@ public class Usuario {
 		this.contraseña = contraseña;
 	}
 
-	public int getTelefono() {
+	public long getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(long telefono) {
 		this.telefono = telefono;
 	}
 
@@ -124,10 +124,6 @@ public class Usuario {
 
 	public void setLogeado(boolean logeado) {
 		this.logeado = logeado;
-	}
-
-	public void setFechaNacimiento(String string) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 }
