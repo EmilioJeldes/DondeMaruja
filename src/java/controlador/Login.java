@@ -36,6 +36,22 @@ public class Login extends HttpServlet {
 			throws ServletException, IOException, RuntimeException {
 		response.setContentType("text/html;charset=UTF-8");
 
+		/*
+		HttpSession session = request.getSession();
+		String error = (String) session.getAttribute("error");
+
+		if (error == null) {
+			error = "";
+		}
+
+		session.setAttribute("error", error.toString());
+		 */
+		String error = (String) request.getAttribute("error");
+		if (error == null) {
+			error = "";
+		}
+		request.setAttribute("error", error);
+
 		Utilidades.getInstancia().irAPagina(response, request, getServletContext(), "/login.jsp");
 
 	}

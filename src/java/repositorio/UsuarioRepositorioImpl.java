@@ -2,6 +2,7 @@ package repositorio;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import modelo.Usuario;
 
 public class UsuarioRepositorioImpl implements UsuarioRepositorio {
@@ -28,16 +29,20 @@ public class UsuarioRepositorioImpl implements UsuarioRepositorio {
 	@Override
 	public Usuario guardar(Usuario usuario) {
 		Usuario usuarioGuardado = null;
+		System.out.println(ID_USUARIO);
 		if (usuario.getId() == 0) {
+			System.out.println("id Usuario entrante" + usuario.getId());
 			ID_USUARIO++;
 			usuario.setId(ID_USUARIO);
 			usuarios.add(usuario);
 			usuarioGuardado = usuarios.stream().filter(u -> u.getId() == ID_USUARIO).findFirst().get();
 		} else {
+			System.out.println("id Usuario que no es 0 " + usuario.getId());
 			usuarios.remove(usuario.getId());
 			usuarios.add(usuario.getId(), usuario);
 			usuarioGuardado = usuarios.stream().filter(u -> u.getId() == usuario.getId()).findFirst().get();
 		}
+		System.out.println(ID_USUARIO);
 		return usuarioGuardado;
 	}
 
@@ -48,11 +53,15 @@ public class UsuarioRepositorioImpl implements UsuarioRepositorio {
 	}
 
 	@Override
-	public Usuario login(String email, String password) {
-		Usuario usuarioLogeado = usuarios.stream().filter(u -> u.getEmail().equals(email) && u.getContraseña().equals(password)).findFirst().get();
-		if (usuarioLogeado.getId() != 0) {
-			usuarioLogeado.setLogeado(true);
+	public Usuario login(String email, String password) throws RuntimeException {
+		Usuario usuarioLogeado = null;
+		Optional<Usuario> findFirst = usuarios.stream().filter(u -> u.getEmail().equals(email) && u.getContraseña().equals(password)).findFirst();
+		if (findFirst.isPresent()) {
+			usuarioLogeado = findFirst.get();
+		} else {
+			throw new RuntimeException("Usuario y contraseña incorrectos");
 		}
+
 		return usuarioLogeado;
 	}
 

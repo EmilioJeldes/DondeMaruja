@@ -1,7 +1,14 @@
+<%
+	String error = "";
+	if (!request.getAttribute("error").toString().isEmpty()) {
+		error = request.getAttribute("error").toString();
+	}
+%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <jsp:include page="WEB-INF/partials-dynamic/head.jsp">
-	<jsp:param name="title" value="Iniciar Sesión" />
+	<jsp:param name="title" value="Iniciar Sesion" />
 </jsp:include>
 
 <jsp:include page="WEB-INF/partials-dynamic/menu-navegacion.jsp">
@@ -12,6 +19,11 @@
 	<div class="row">
 		<div class="col m10 s12 offset-m1">
 			<br class="hide-on-med-only"><br class="hide-on-med-only"><br>
+			<div class="card red lighten-1 text-darken-1  <% out.print((error.length() == 0) ? "hide" : "");%> center">
+				<div class="card-content">
+					<p><% out.print((error.length() > 0) ? error : "");%></p>
+				</div>
+			</div>
 			<div class="card">
 				<div class="card-content">
 					<br>

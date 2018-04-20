@@ -39,9 +39,17 @@ public class Authenticate extends HttpServlet {
 		String email = request.getParameter("email");
 		String contraseña = request.getParameter("contraseña");
 
-		Usuario usuarioIniciado = servicioUsuario.iniciarSesion(email, contraseña);
+		System.out.println(email);
+		System.out.println(contraseña);
 
-		utilidades.Utilidades.getInstancia().irAPagina(response, request, getServletContext(), "/authenticate.jsp");
+		try {
+			Usuario usuarioIniciado = servicioUsuario.iniciarSesion(email, contraseña);
+			utilidades.Utilidades.getInstancia().irAPagina(response, request, getServletContext(), "/authenticate.jsp");
+		} catch (RuntimeException e) {
+			request.setAttribute("error", e.getMessage());
+			utilidades.Utilidades.getInstancia().irAPagina(response, request, getServletContext(), "/login.jsp");
+		}
+
 	}
 
 	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

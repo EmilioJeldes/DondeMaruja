@@ -28,7 +28,7 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
 
 	@Override
 	public Usuario iniciarSesion(String email, String contraseña) {
-		Usuario usr = usuarioRepositorio.login(email, email);
+		Usuario usr = usuarioRepositorio.login(email, contraseña);
 		return usr;
 	}
 
