@@ -19,7 +19,7 @@
 	<div class="row">
 		<div class="col m10 s12 offset-m1">
 			<br class="hide-on-med-only"><br class="hide-on-med-only"><br>
-			<div class="card red lighten-1 text-darken-1  <% out.print((error.length() == 0) ? "hide" : "");%> center">
+			<div class="card red lighten-1 white-text  <% out.print((error.length() == 0) ? "hide" : "");%> center">
 				<div class="card-content">
 					<p><% out.print((error.length() > 0) ? error : "");%></p>
 				</div>
@@ -32,11 +32,12 @@
 					<form class="container" action="/authenticate">
 						<div class="row">
 							<div class="input-field col s12 m6">
-								<input id="email" type="email" class="validate" name="email">
+								<input id="email" type="email" class="<% out.print((error.length() == 0) ? "validate" : "invalid");%>" name="email">
 								<label for="email">Email</label>
 							</div>
 							<div class="input-field col s12 m6">
-								<input id="contraseña" type="password" class="validate" name="contraseña">
+								<input id="contraseña" type="password" class="<% out.print((error.length() == 0) ? "validate" : "invalid");%>"
+									   name="contraseña">
 								<label for="contraseña">Contraseña</label>
 							</div>
 							<div class="row center">

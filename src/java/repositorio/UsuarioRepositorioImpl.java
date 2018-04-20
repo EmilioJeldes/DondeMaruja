@@ -29,20 +29,16 @@ public class UsuarioRepositorioImpl implements UsuarioRepositorio {
 	@Override
 	public Usuario guardar(Usuario usuario) {
 		Usuario usuarioGuardado = null;
-		System.out.println(ID_USUARIO);
 		if (usuario.getId() == 0) {
-			System.out.println("id Usuario entrante" + usuario.getId());
 			ID_USUARIO++;
 			usuario.setId(ID_USUARIO);
 			usuarios.add(usuario);
 			usuarioGuardado = usuarios.stream().filter(u -> u.getId() == ID_USUARIO).findFirst().get();
 		} else {
-			System.out.println("id Usuario que no es 0 " + usuario.getId());
 			usuarios.remove(usuario.getId());
 			usuarios.add(usuario.getId(), usuario);
 			usuarioGuardado = usuarios.stream().filter(u -> u.getId() == usuario.getId()).findFirst().get();
 		}
-		System.out.println(ID_USUARIO);
 		return usuarioGuardado;
 	}
 

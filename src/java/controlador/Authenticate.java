@@ -39,9 +39,6 @@ public class Authenticate extends HttpServlet {
 		String email = request.getParameter("email");
 		String contraseña = request.getParameter("contraseña");
 
-		System.out.println(email);
-		System.out.println(contraseña);
-
 		try {
 			Usuario usuarioIniciado = servicioUsuario.iniciarSesion(email, contraseña);
 			utilidades.Utilidades.getInstancia().irAPagina(response, request, getServletContext(), "/authenticate.jsp");
