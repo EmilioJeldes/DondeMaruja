@@ -19,12 +19,14 @@
 					if (loged == false) {
 				%>
 				<li><a href="/">Inicio</a></li>
+				<li><a href="/products">Productos</a></li>
 				<li><a href = "/login">Iniciar Sesion</a></li>
 				<li><a href = "/register">Registrarse</a></li>
 					<%
 					} else {
 					%>
 				<li><a href="/home">Inicio</a></li>
+				<li><a href="/products">Productos</a></li>
 				<li><a href = "/logout">Cerrar Sesion</a></li>
 					<%
 						}
@@ -35,12 +37,14 @@
 					if (loged == false) {
 				%>
 				<li><a href="/">Inicio</a></li>
+				<li><a href="/products">Productos</a></li>
 				<li><a href = "/login">Iniciar Sesion</a></li>
-				<li><a href = "/signin">Registrarse</a></li>
+				<li><a href = "/register">Registrarse</a></li>
 					<%
 					} else {
 					%>
 				<li><a href="/home">Inicio</a></li>
+				<li><a href="/products">Productos</a></li>
 				<li><a href = "/logout">Cerrar Sesion</a></li>
 					<%
 						}

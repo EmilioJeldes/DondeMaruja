@@ -13,8 +13,7 @@
 		<h1>Home</h1>
 	</div>
 </main>
-<jsp:include page="WEB-INF/partials-dynamic/productos.jsp"></jsp:include>
 
 
-	<!-- Footer -->
+<!-- Footer -->
 <%@include file="WEB-INF/partials-static/footer.html" %>

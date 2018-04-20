@@ -8,8 +8,13 @@ public class Product {
 	private String productName;
 	private List<Integer> categories;
 	private Integer brandId;
+	private String description;
+	private String imgUrl;
+	private int price;
 
 	public Product() {
+		productId = 0;
+		brandId = 0;
 	}
 
 	public Integer getProductId() {
@@ -42,6 +47,30 @@ public class Product {
 
 	public void setBrandId(Integer brandId) {
 		this.brandId = brandId;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
 }

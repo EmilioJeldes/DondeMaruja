@@ -8,12 +8,14 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Product;
 import model.User;
 
 public class Utilities {
 
 	static final Utilities instancia = new Utilities();
 	public static List<User> usuarios = new ArrayList<>();
+	public static List<Product> products = new ArrayList<>();
 
 	public Utilities() {
 	}

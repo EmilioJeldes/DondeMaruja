@@ -43,7 +43,7 @@
 								</div>
 								<div class="row">
 									<div class="col s12 m12 center">
-										<p>¿No tiene cuenta de usuario aún? <a href="/register">Creala aquí</a></p>
+										<p>¿No tienes cuenta de usuario aún? <a href="/register">Creala aquí</a></p>
 									</div>
 								</div>
 								<div class="row center">

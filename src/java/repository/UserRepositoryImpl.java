@@ -59,8 +59,9 @@ public class UserRepositoryImpl implements UserRepository {
 			utilities.Utilities.usuarios.add(entity);
 			usuarioGuardado = utilities.Utilities.usuarios.stream().filter(u -> u.getId() == ID_USUARIO).findFirst().get();
 		} else {
-			utilities.Utilities.usuarios.remove(entity.getId());
-			utilities.Utilities.usuarios.add(entity.getId(), entity);
+			User get = utilities.Utilities.usuarios.stream().filter(u -> u.getId() == entity.getId()).findFirst().get();
+			utilities.Utilities.usuarios.remove(get);
+			utilities.Utilities.usuarios.add(entity);
 			usuarioGuardado = utilities.Utilities.usuarios.stream().filter(u -> u.getId() == entity.getId()).findFirst().get();
 		}
 		return usuarioGuardado;
