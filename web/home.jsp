@@ -8,9 +8,11 @@
 	<jsp:param name="item" value="inicio" />
 </jsp:include>
 
-<div class="container ">
-	<h1>Home</h1>
-</div>
+<main>
+	<div class="container ">
+		<h1>Home</h1>
+	</div>
+</main>
 <jsp:include page="WEB-INF/partials-dynamic/productos.jsp"></jsp:include>
 
 

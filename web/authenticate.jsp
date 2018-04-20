@@ -8,7 +8,9 @@
 	<jsp:param name="item" value="inicio" />
 </jsp:include>
 
-<h1 class="container">Authenticated</h1>
+<main>
+	<h1 class="container">Authenticated</h1>
+</main>
 
 <!-- Footer -->
 <%@include file="WEB-INF/partials-static/footer.html" %>
