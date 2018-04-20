@@ -1,17 +1,17 @@
-package servicio;
+package service;
 
 import command.UserCommand;
 import converter.RequestToUserCommand;
 import converter.UserCommandToUser;
 import converter.UserToUserCommand;
 import javax.servlet.http.HttpServletRequest;
-import modelo.User;
-import repositorio.UsuarioRepositorio;
-import repositorio.UsuarioRepositorioImpl;
+import model.User;
+import repository.UserRepositoryImpl;
+import repository.UserRepository;
 
-public class ServicioUsuarioImpl implements ServicioUsuario {
+public class UserServiceImpl implements UserService {
 
-	UsuarioRepositorio userRepository = new UsuarioRepositorioImpl();
+	UserRepository userRepository = new UserRepositoryImpl();
 	RequestToUserCommand requestToUserCommand = new RequestToUserCommand();
 	UserCommandToUser userCommandToUser = new UserCommandToUser();
 	UserToUserCommand userToUserCommand = new UserToUserCommand();
@@ -44,7 +44,7 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
 	public UserCommand registrarUsuario(HttpServletRequest source) {
 		UserCommand command = requestToUserCommand.convert(source);
 		User user = userCommandToUser.convert(command);
-		User savedUser = userRepository.guardar(user);
+		User savedUser = userRepository.save(user);
 		return userToUserCommand.convert(savedUser);
 	}
 

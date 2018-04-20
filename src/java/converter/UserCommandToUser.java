@@ -1,7 +1,7 @@
 package converter;
 
 import command.UserCommand;
-import modelo.User;
+import model.User;
 
 public class UserCommandToUser implements Converter<UserCommand, User> {
 
@@ -12,17 +12,17 @@ public class UserCommandToUser implements Converter<UserCommand, User> {
 		}
 
 		User user = new User();
-		user.setApellido(source.getApellido());
-		user.setContraseña(source.getContraseña());
-		user.setEdad(source.getEdad());
+		user.setLastName(source.getApellido());
+		user.setPassword(source.getContraseña());
+		user.setAge(source.getEdad());
 		user.setEmail(source.getEmail());
-		user.setEstadoCivil(source.getEmail());
-		user.setFechaNacimiento(source.getFechaNacimiento());
+		user.setCivilStatus(source.getEmail());
+		user.setBirthDate(source.getFechaNacimiento());
 		user.setId(source.getId());
-		user.setLogeado(source.isLogeado());
-		user.setNombre(source.getNombre());
+		user.setLogged(source.isLogeado());
+		user.setName(source.getNombre());
 		user.setRut(source.getRut());
-		user.setTelefono(source.getTelefono());
+		user.setPhoneNumber(source.getTelefono());
 		return user;
 	}
 

@@ -1,4 +1,4 @@
-package utilidades;
+package utilities;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,17 +8,17 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.User;
+import model.User;
 
-public class Utilidades {
+public class Utilities {
 
-	static final Utilidades instancia = new Utilidades();
+	static final Utilities instancia = new Utilities();
 	public static List<User> usuarios = new ArrayList<>();
 
-	public Utilidades() {
+	public Utilities() {
 	}
 
-	public static Utilidades getInstancia() {
+	public static Utilities getInstancia() {
 		return instancia;
 	}
 

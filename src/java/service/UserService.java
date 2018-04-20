@@ -1,10 +1,10 @@
-package servicio;
+package service;
 
 import command.UserCommand;
 import javax.servlet.http.HttpServletRequest;
-import modelo.User;
+import model.User;
 
-public interface ServicioUsuario {
+public interface UserService {
 
 	boolean isLoggedIn(String id);
 

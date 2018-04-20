@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controlador;
+package controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author emilio
  */
-@WebServlet(name = "Logout", urlPatterns = {"/logout"})
-public class Logout extends HttpServlet {
+@WebServlet(name = "Home", urlPatterns = {"/home"})
+public class Home extends HttpServlet {
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -31,8 +31,20 @@ public class Logout extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 
-		request.getSession().setAttribute("loged", false);
-		response.sendRedirect("/");
+		if (null == request.getSession().getAttribute("loged")) {
+			request.getSession().setAttribute("loged", false);
+			response.sendRedirect("/login");
+		}
+
+		boolean loged = (boolean) request.getSession().getAttribute("loged");
+		if (loged) {
+			request.getSession().setAttribute("loged", true);
+			utilities.Utilities.getInstancia().irAPagina(response, request, getServletContext(), "/home.jsp");
+		} else {
+			request.getSession().setAttribute("loged", false);
+			response.sendRedirect("/login");
+		}
+
 	}
 
 	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -11,8 +11,8 @@
 <div class="container ">
 	<h1>Home</h1>
 </div>
+<jsp:include page="WEB-INF/partials-dynamic/productos.jsp"></jsp:include>
 
 
-
-<!-- Footer -->
+	<!-- Footer -->
 <%@include file="WEB-INF/partials-static/footer.html" %>

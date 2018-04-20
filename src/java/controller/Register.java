@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controlador;
+package controller;
 
 import command.UserCommand;
 import java.io.IOException;
@@ -12,8 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import servicio.ServicioUsuario;
-import servicio.ServicioUsuarioImpl;
+import service.UserServiceImpl;
+import service.UserService;
 
 /**
  *
@@ -22,7 +22,7 @@ import servicio.ServicioUsuarioImpl;
 @WebServlet(name = "Register", urlPatterns = {"/register"})
 public class Register extends HttpServlet {
 
-	ServicioUsuario userService = new ServicioUsuarioImpl();
+	UserService userService = new UserServiceImpl();
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -36,7 +36,7 @@ public class Register extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 
-		utilidades.Utilidades.getInstancia().irAPagina(response, request, getServletContext(), "/registro.jsp");
+		utilities.Utilities.getInstancia().irAPagina(response, request, getServletContext(), "/registro.jsp");
 	}
 
 	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

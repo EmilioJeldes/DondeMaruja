@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controlador;
+package controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -11,18 +11,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import servicio.ServicioUsuario;
-import servicio.ServicioUsuarioImpl;
-import utilidades.Utilidades;
+import model.User;
+import service.UserServiceImpl;
+import service.UserService;
 
 /**
  *
  * @author emilio
  */
-@WebServlet(name = "Login", urlPatterns = {"/login"})
-public class Login extends HttpServlet {
+@WebServlet(name = "Authenticate", urlPatterns = {"/authenticate"})
+public class Authenticate extends HttpServlet {
 
-	ServicioUsuario servicioUsuario = new ServicioUsuarioImpl();
+	UserService servicioUsuario = new UserServiceImpl();
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -33,16 +33,22 @@ public class Login extends HttpServlet {
 	 * @throws IOException if an I/O error occurs
 	 */
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException, RuntimeException {
+			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 
-		String error = (String) request.getAttribute("error");
-		if (error == null) {
-			error = "";
-		}
-		request.setAttribute("error", error);
+		String email = request.getParameter("email");
+		String contraseña = request.getParameter("contraseña");
 
-		Utilidades.getInstancia().irAPagina(response, request, getServletContext(), "/login.jsp");
+		try {
+			User usuarioIniciado = servicioUsuario.iniciarSesion(email, contraseña);
+			request.getSession().setAttribute("loged", true);
+			request.getSession().setAttribute("id", usuarioIniciado.getId());
+			response.sendRedirect("/home");
+		} catch (RuntimeException e) {
+			request.setAttribute("error", e.getMessage());
+			request.getSession().setAttribute("loged", false);
+			utilities.Utilities.getInstancia().irAPagina(response, request, getServletContext(), "/login.jsp");
+		}
 
 	}
 
@@ -60,8 +66,6 @@ public class Login extends HttpServlet {
 			throws ServletException, IOException {
 		processRequest(request, response);
 	}
-
-	;
 
 	/**
 	 * Handles the HTTP <code>POST</code> method.
@@ -85,7 +89,6 @@ public class Login extends HttpServlet {
 	@Override
 	public String getServletInfo() {
 		return "Short description";
-	}
-// </editor-fold>
+	}// </editor-fold>
 
 }
